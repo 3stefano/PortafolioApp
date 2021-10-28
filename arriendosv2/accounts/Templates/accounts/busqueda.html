@@ -1,0 +1,119 @@
+{% extends 'accounts/main.html' %}
+<link href="/static/css/search.css" rel="stylesheet">
+{% block content %}
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Busqueda de Reservas</h1>
+              <span class="color-text-a">Busca tu reserva para saber su estado</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Busqueda Reserva</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Reservas
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+
+<body>
+
+
+
+{% if searched %}
+{% load static %}
+
+<center>
+  <div class="justify-content-center">
+  <h1 class="text-dark">Buscaste por el Rut: {{searched}}</h1>
+  {% for reserva in reservas %}
+    <div class="col-lg-4">
+      <div class="card mb-5 mb-lg-0">
+         {% load mathfilters %}
+    
+        <div class="card-body">
+        <h5 class="card-title text-uppercase text-center">Status Reserva</h5>
+        <h5 class="text-info text-uppercase text-center"> {{reserva.statusreserva}}</h5>
+        <h6 class="card-price text-center">Total: ${{reserva.departamento_id_depto.precio}} + ${{reserva.servicios_extra_tipo_servicio.precio}}<span class="period"> /Mes</span></h6>
+         <h6 class="card-price text-center">Total: {{ reserva.total }}<span class="period"> </span></h6>
+        <h6 class="card-price text-center">Pago Reserva: {{reserva.cuota1}}
+          <span class="period"> - Cuota 1/2</span></h6>
+
+        <hr>
+        <ul class="fa-ul">
+          <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Rut Reserva: {{reserva.rutcliente}} </strong></li>
+          <li><span class="fa-li"><i class="fas fa-check"></i></span>Reserva a nombre de: {{reserva.nombre_completo}}</li>
+          <li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha de tu reserva: {{reserva.fechareserva}}</li>
+          <li><span class="fa-li"><i class="fas fa-check"></i></span>ID Departamento: {{reserva.departamento_id_depto}} - Precio: ${{reserva.departamento_id_depto.precio}}</li>
+          <li><span class="fa-li"><i class="fas fa-check"></i></span>Correo: {{reserva.correo}}</li>
+          <li><span class="fa-li"><i class="fas fa-check"></i></span>Telefono: {{reserva.telefono}}</li>
+          <li><span class="fa-li"><i class="fas fa-check"></i></span>¿Servicio Extra? {{reserva.servicios_extra_tipo_servicio}} - Precio: ${{reserva.servicios_extra_tipo_servicio.precio}} </li>
+
+        </ul>
+        <a href="{% url 'pago' searched %}" class="btn btn btn btn-outline-success btn-sm"> Pagar Reserva </a>
+        <a href="{% url 'checkin' searched %}" class="btn btn btn btn-outline-warning btn-sm"> Check-in </a>
+        <a href="{% url 'delete_reserva' searched %}" class="btn btn-outline-danger btn-sm"> Cancelar Reserva </a>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+     
+  </div>  
+    
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+{% load static %}
+
+<div class="d-flex justify-content-center">
+  <h1>Busca por tu rut!</h1>
+</div>
+<div class="container">
+    <div class=" d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <form action="" method=POST>
+            {% csrf_token %}
+            <div class="search"> <i class="fa fa-search"></i> <input type="searched" class="form-control" placeholder="Busca Reservas por tu rut!" name="searched"> 
+            <button class="btn btn-primary">Buscar</button> </div>
+          </form>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+
+</body>
+
+{% endblock %}
+
