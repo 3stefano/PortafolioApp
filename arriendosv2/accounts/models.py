@@ -112,7 +112,7 @@ class Reserva(models.Model):
     funcionario_rut_f = models.ForeignKey(Funcionario, models.DO_NOTHING, db_column='funcionario_rut_f', blank=True, null=True)
     correo = models.CharField(max_length=100)
     telefono = models.IntegerField()
-    statusreserva = models.CharField(max_length=200,default='ESPERANDO APROBACION')
+    statusreserva = models.CharField(max_length=200,default='EN ESPERANDO PAGO RESERVA')
     servicios_extra_tipo_servicio = models.ForeignKey('ServiciosExtra', models.DO_NOTHING, db_column='servicios_extra_tipo_servicio')
 
     def __str__(self):

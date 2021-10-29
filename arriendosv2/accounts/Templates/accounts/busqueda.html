@@ -45,7 +45,13 @@
     
         <div class="card-body">
         <h5 class="card-title text-uppercase text-center">Status Reserva</h5>
-        <h5 class="text-info text-uppercase text-center"> {{reserva.statusreserva}}</h5>
+        {% if reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
+        <h5 class="text-success text-uppercase text-center"> {{reserva.statusreserva}}
+        {% endif %}
+        {% if reserva.statusreserva == "FALTA PAGO RESERVA" %}
+        <h5 class="text-danger text-uppercase text-center"> {{reserva.statusreserva}}
+        {% endif %}
+        </h5>
         <h6 class="card-price text-center">Total: ${{reserva.departamento_id_depto.precio}} + ${{reserva.servicios_extra_tipo_servicio.precio}}<span class="period"> /Mes</span></h6>
          <h6 class="card-price text-center">Total: {{ reserva.total }}<span class="period"> </span></h6>
         <h6 class="card-price text-center">Pago Reserva: {{reserva.cuota1}}
@@ -62,9 +68,15 @@
           <li><span class="fa-li"><i class="fas fa-check"></i></span>¿Servicio Extra? {{reserva.servicios_extra_tipo_servicio}} - Precio: ${{reserva.servicios_extra_tipo_servicio.precio}} </li>
 
         </ul>
-        <a href="{% url 'pago' searched %}" class="btn btn btn btn-outline-success btn-sm"> Pagar Reserva </a>
-        <a href="{% url 'checkin' searched %}" class="btn btn btn btn-outline-warning btn-sm"> Check-in </a>
-        <a href="{% url 'delete_reserva' searched %}" class="btn btn-outline-danger btn-sm"> Cancelar Reserva </a>
+        {% if reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
+        
+       <a href="#" class="btn btn-secondary btn-sm disabled" role="button" aria-disabled="true">Pagar Reserva</a>
+       
+        {% else %}
+        <a href="{% url 'pago' searched %}" class="btn btn btn btn btn-success btn-sm"> Pagar Reserva </a>
+        {% endif%}
+        <a href="{% url 'checkin' searched %}" class="btn btn btn btn btn-warning btn-sm"> Check-in </a>
+        <a href="{% url 'delete_reserva' searched %}" class="btn btn btn-danger btn-sm"> Cancelar Reserva </a>
         </div>
         {% endfor %}
       </div>
