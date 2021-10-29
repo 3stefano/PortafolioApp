@@ -44,17 +44,19 @@
          {% load mathfilters %}
     
         <div class="card-body">
-        <h5 class="card-title text-uppercase text-center">Status Reserva</h5>
+        <h4 class="card-title text-uppercase text-center">Status Reserva:</h5>
         {% if reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
         <h5 class="text-success text-uppercase text-center"> {{reserva.statusreserva}}
+        <h6 class="text-primary text-uppercase text-center"> Debes volver el {{reserva.fechareserva}} Para realizar tu CheckIn
         {% endif %}
-        {% if reserva.statusreserva == "FALTA PAGO RESERVA" %}
+        {% if reserva.statusreserva == "ESPERANDO PAGO RESERVA" %}
         <h5 class="text-danger text-uppercase text-center"> {{reserva.statusreserva}}
+        <h6 class="text-primary text-uppercase text-center"> Debes pagar tu reserva con el boton de abajo!
         {% endif %}
         </h5>
         <h6 class="card-price text-center">Total: ${{reserva.departamento_id_depto.precio}} + ${{reserva.servicios_extra_tipo_servicio.precio}}<span class="period"> /Mes</span></h6>
          <h6 class="card-price text-center">Total: {{ reserva.total }}<span class="period"> </span></h6>
-        <h6 class="card-price text-center">Pago Reserva: {{reserva.cuota1}}
+        <h6 class="card-price text-center">Pago Reserva: {{reserva.cuota1view}}
           <span class="period"> - Cuota 1/2</span></h6>
 
         <hr>
