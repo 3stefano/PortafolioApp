@@ -54,10 +54,10 @@
         <h6 class="text-primary text-uppercase text-center"> Debes pagar tu reserva con el boton de abajo!
         {% endif %}
         </h5>
-        <h6 class="card-price text-center">Total: ${{reserva.departamento_id_depto.precio}} + ${{reserva.servicios_extra_tipo_servicio.precio}}<span class="period"> /Mes</span></h6>
+        <h6 class="card-price text-center">Reserva mas servicio extra: ${{reserva.departamento_id_depto.precio}} + ${{reserva.servicios_extra_tipo_servicio.precio}}<span class="period"> /Mes</span></h6>
          <h6 class="card-price text-center">Total: {{ reserva.total }}<span class="period"> </span></h6>
-        <h6 class="card-price text-center">Pago Reserva: {{reserva.cuota1view}}
-          <span class="period"> - Cuota 1/2</span></h6>
+        <!--<h6 class="card-price text-center">Pago Reserva: {{reserva.cuota1view}}
+          <span class="period"> - Cuota 1/2</span></h6>-->
 
         <hr>
         <ul class="fa-ul">

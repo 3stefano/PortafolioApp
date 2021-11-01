@@ -4,11 +4,9 @@
 
 
 <!-- ======= Intro Section ======= -->
-  <div class="intro intro-carousel swiper-container position-relative">
-
-    <div class="swiper-wrapper">
-
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/img/depto1.jpg)">
+  <div class="intro intro-carousel  position-relative">
+    <div class="wrapper">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/img/banner3.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -16,15 +14,15 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Santiago, Vitacura
-                      <br> ID:78345
+                    <p class="intro-title-top">Todo Chile
+                      <br> 
                     </p>
                     <h1 class="intro-title mb-4 ">
-                      <span class="color-b">2D/1B </span> Cerro
-                      <br> Condominio privado
+                      <span class="color-b">Reservas </span> 
+                      <br> Al mejor precio
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">Arrendar | $ 400.000/Mes</span></a>
+                      <a href="{% url 'propiedades' %}"><span class="price-a">Reservas desde los $200.000</span></a>
                     </p>
                   </div>
                 </div>
@@ -32,62 +30,13 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/img/depto2.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Santiago, Las Condes
-                      <br> ID:78324
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">1D/1B </span> Metro Manquehue
-                      <br> Condominio privado
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">Arrendar | $ 300.000/Mes</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/img/depto3.jpeg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Santiago, Providencia
-                      <br> ID:78332
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">3D/2B </span> Metro Los Leones
-                      <br> Seguridad 24/7
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">Arrendar | $ 500.000/Mes</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div>  
     </div>
     <div class="swiper-pagination"></div>
   </div><!-- End Intro Section -->
 
   <main id="main">
+
 
     <!-- ======= Services Section ======= -->
     <section class="section-services section-t8">
@@ -96,7 +45,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Nuestros Servicios.</h2>
+                <h2 class="title">Nuestros Servicios.</h2>
               </div>
             </div>
           </div>
@@ -109,16 +58,16 @@
                   <span class="bi bi-cart"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Arriendos</h2>
+                  <h2 class="title">Reservas</h2>
                 </div>
               </div>
               <div class="card-body-c">
                 <p class="content-c">
-                  Arrienda al mejor precio y sin preocupaciones con arriendos de temporada.
+                  Reserva al mejor precio y con el sistema mas confiable.
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Arrendar
+                <a href="#" class="link-c link-icon">Reservas
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -131,39 +80,17 @@
                   <span class="bi bi-calendar4-week"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Check-in</h2>
+                  <h2 class="title">MiReservas</h2>
                 </div>
               </div>
               <div class="card-body-c">
                 <p class="content-c">
-                  El mejor servicio de check-in siempre en contacto con un ejecutivo que te guiara paso a paso.
+                  El mejor sistema de seguimiento de reservas!
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Ver Mas
+                <a href="{% url 'busqueda_reserva' %}" class="link-c link-icon">MiReservas
                   <span class="bi bi-calendar4-week"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-box-c foo">
-              <div class="card-header-c d-flex">
-                <div class="card-box-ico">
-                  <span class="bi bi-card-checklist"></span>
-                </div>
-                <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Arrendar tu propiedad</h2>
-                </div>
-              </div>
-              <div class="card-body-c">
-                <p class="content-c">
-                  Necesitas arrendar una propiedad? Nosotros nos encargamos, contacta a nuestro equipo y te guiaremos en todo este proceso.
-                </p>
-              </div>
-              <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Contactar
-                  <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
             </div>
@@ -174,224 +101,6 @@
 
 
 
-    <!-- ======= Latest Properties Section ======= -->
-    <section class="section-property section-t8">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="title-wrap d-flex justify-content-between">
-              <div class="title-box">
-                <h2 class="title-a">Ultimas Propiedades</h2>
-              </div>
-              <div class="title-link">
-                <a href="property-grid.html">Todas las propiedades
-                  <span class="bi bi-chevron-right"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="property-carousel" class="swiper-container">
-          <div class="swiper-wrapper">
-
-            <div class="carousel-item-b swiper-slide">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="static/img/property-6.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">206 Mount
-                          <br /> Olive Road Two</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">rent | $ 12.000</span>
-                      </div>
-                      <a href="#" class="link-a">Click here to view
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Area</h4>
-                          <span>340m
-                            <sup>2</sup>
-                          </span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Beds</h4>
-                          <span>2</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Baths</h4>
-                          <span>4</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garages</h4>
-                          <span>1</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-b swiper-slide">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="static/img/property-3.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">157 West
-                          <br /> Central Park</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">rent | $ 12.000</span>
-                      </div>
-                      <a href="property-single.html" class="link-a">Click here to view
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Area</h4>
-                          <span>340m
-                            <sup>2</sup>
-                          </span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Beds</h4>
-                          <span>2</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Baths</h4>
-                          <span>4</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garages</h4>
-                          <span>1</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-b swiper-slide">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="static/img/property-7.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">245 Azabu
-                          <br /> Nishi Park let</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">rent | $ 12.000</span>
-                      </div>
-                      <a href="property-single.html" class="link-a">Click here to view
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Area</h4>
-                          <span>340m
-                            <sup>2</sup>
-                          </span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Beds</h4>
-                          <span>2</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Baths</h4>
-                          <span>4</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garages</h4>
-                          <span>1</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-b swiper-slide">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="static/img/property-10.jpg" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">204 Montal
-                          <br /> South Bela Two</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">rent | $ 12.000</span>
-                      </div>
-                      <a href="property-single.html" class="link-a">Click here to view
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Area</h4>
-                          <span>340m
-                            <sup>2</sup>
-                          </span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Beds</h4>
-                          <span>2</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Baths</h4>
-                          <span>4</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garages</h4>
-                          <span>1</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-          </div>
-        </div>
-        <div class="propery-carousel-pagination carousel-pagination"></div>
-
-      </div>
-    </section><!-- End Latest Properties Section -->
 
     <!-- ======= Agents Section ======= -->
     <section class="section-agents section-t8">
