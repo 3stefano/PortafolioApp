@@ -77,7 +77,11 @@
         {% else %}
         <a href="{% url 'pago' searched %}" class="btn btn btn btn btn-success btn-sm"> Pagar Reserva </a>
         {% endif%}
+        {% if reserva.statusreserva == "ESPERANDO PAGO RESERVA" %}
+        <a href="{% url 'checkin' searched %}" class="btn btn btn btn btn-warning btn-sm disabled"> Check-in </a>
+        {% else %}
         <a href="{% url 'checkin' searched %}" class="btn btn btn btn btn-warning btn-sm"> Check-in </a>
+        {% endif%}
         <a href="{% url 'delete_reserva' searched %}" class="btn btn btn-danger btn-sm"> Cancelar Reserva </a>
         </div>
         {% endfor %}
