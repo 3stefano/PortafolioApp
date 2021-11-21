@@ -1,6 +1,6 @@
 from django import forms 
 from django.forms import ModelForm
-from .models import Departamento,Reserva
+from .models import Departamento,Reserva,Transporte
 
 
 
@@ -33,7 +33,21 @@ class ReservaForm(ModelForm):
 			}
 
    	
-
-   	 
+class PlanificacionForm(ModelForm):
+	class Meta:
+		model =Transporte
+		fields = 'desde','horario','reserva_rutcliente'
+		labels = {
+        "desde": "Direccion donde te buscaremos",
+        "horario": "Hora la cual deseas ser recogido",
+        "reserva_rutcliente":"Rut Reserva",
+   		}
+		widgets = {	
+					'reserva_rutcliente': forms.TextInput(attrs={'class':'form-control'}),
+					'desde': forms.TextInput(attrs={'class':'form-control'}),
+					'horario': forms.TextInput(attrs={'class':'form-control'}),
+				
+					
+			}
 
  

@@ -18,6 +18,15 @@ urlpatterns = [
     path('pago/<searched>', views.pago,name='pago'),
     path('agregar_pago/<searched>', views.agregar_pago, name='agregar_pago'),
 
+    path('planificar/', views.planificar, name='planificar'),
+
+
+
+    path('checkin/<searched>', views.checkin,name='checkin'),
+    path('agregar_checkin/<searched>', views.agregar_checkin, name='agregar_checkin'),
+    
+    
+    path('venue_pdf/<searched>', views.venue_pdf,name='venue_pdf'),
 
 
 ]

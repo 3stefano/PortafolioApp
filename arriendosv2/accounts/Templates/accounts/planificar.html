@@ -1,0 +1,59 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Planificacion</h1>
+              <span class="color-text-a">Planifica el transporte</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Planificacion</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Propiedades
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+{%load static %}
+<body>
+{% if submitted %}
+<div class="d-flex justify-content-center">
+  Transporte Planificado con exito!
+</div>
+{% else %}
+
+<center>
+<p>Planifica tu transporte para que te vaya a buscar el dia de la reserva y a la hora que desees</p>
+
+
+</center>
+
+  <div class="d-flex justify-content-center">
+      <form action="" method=POST>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="d-flex justify-content-center">
+      <input type="submit" value="Reservar" class="btn btn-warning">
+      </div>
+      </form>
+  </div>
+{% endif %}
+
+
+
+</body>
+
+{% endblock %}

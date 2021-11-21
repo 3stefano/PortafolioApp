@@ -36,13 +36,78 @@
 {% load static %}
 
 <center>
+
   <div class="justify-content-center">
-  <h1 class="text-dark">Buscaste por el Rut: {{searched}}</h1>
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="title-box-d">
+         <h3 class="title">Buscaste por el Rut: {{searched}}</h3>
+        </div>
+    </div>
+ </div>   
+  <!-- TRANSPORTE ALERT --> 
+ 
+  
+  {% for transporte in transportes %}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-dismissable alert-info">
+               
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                ×
+              </button>
+              <h4>
+                Transporte planificado
+              </h4> <strong>ATENTO!</strong> Se te recogera en {{transporte.desde}} a las {{transporte.horario}}, Tu conductor designado es {{transporte.nombre}} el cual te recogera en un {{transporte.vehiculo}} <a href="#" class="alert-link"></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  
+<!-- TRANSPORTE ALERT FIN -->  
+  <!-- Checkout ALERT --> 
+ 
+  
+  {% for checkout in checkouts %}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-dismissable alert-warning">
+               
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                ×
+              </button>
+              <h4>
+                Informacion de tu checkout
+              </h4> <strong>CHECKOUT:</strong>En tu estadia detectamos un total de Multas:{{checkout.multas}} Reparaciones:{{checkout.reparaciones}} <a href="#" class="alert-link"></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  
+<!-- Checkout ALERT FIN -->                               
   {% for reserva in reservas %}
-    <div class="col-lg-4">
+  
+  {% load mathfilters %}
+  <div class="col-lg-4">
       <div class="card mb-5 mb-lg-0">
-         {% load mathfilters %}
-    
         <div class="card-body">
         <h4 class="card-title text-uppercase text-center">Status Reserva:</h5>
         {% if reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
@@ -52,6 +117,9 @@
         {% if reserva.statusreserva == "ESPERANDO PAGO RESERVA" %}
         <h5 class="text-danger text-uppercase text-center"> {{reserva.statusreserva}}
         <h6 class="text-primary text-uppercase text-center"> Debes pagar tu reserva con el boton de abajo!
+        {% endif %}
+        {% if reserva.statusreserva == "RESERVA COMPLETADA" %}
+        <h5 class="text-success text-uppercase text-center"> {{reserva.statusreserva}}
         {% endif %}
         </h5>
         <h6 class="card-price text-center">Reserva mas servicio extra: ${{reserva.departamento_id_depto.precio}} + ${{reserva.servicios_extra_tipo_servicio.precio}}<span class="period"> /Mes</span></h6>
@@ -69,28 +137,64 @@
           <li><span class="fa-li"><i class="fas fa-check"></i></span>Telefono: {{reserva.telefono}}</li>
           <li><span class="fa-li"><i class="fas fa-check"></i></span>¿Servicio Extra? {{reserva.servicios_extra_tipo_servicio}} - Precio: ${{reserva.servicios_extra_tipo_servicio.precio}} </li>
 
+         
+          <li><span class="fa-li"><i class="fas "></i></span> Si elegiste transporte debes pagar la reserva para planificar </li>
+           <li><span class="fa-li"><i class="fas "></i></span> SI YA PLANIFICASTE NO VUELVAS A REALIZARLO  {{reserva.transporte_reserva_rutcliente.nombre}}</li>
+         
+
         </ul>
-        {% if reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
+        {% if reserva.statusreserva == "RESERVA REALIZADA - PAGADA" or reserva.statusreserva == "RESERVA COMPLETADA" %}
         
        <a href="#" class="btn btn-secondary btn-sm disabled" role="button" aria-disabled="true">Pagar Reserva</a>
        
         {% else %}
         <a href="{% url 'pago' searched %}" class="btn btn btn btn btn-success btn-sm"> Pagar Reserva </a>
         {% endif%}
-        {% if reserva.statusreserva == "ESPERANDO PAGO RESERVA" %}
+        {% if reserva.statusreserva == "ESPERANDO PAGO RESERVA" or reserva.statusreserva == "RESERVA COMPLETADA" %}
         <a href="{% url 'checkin' searched %}" class="btn btn btn btn btn-warning btn-sm disabled"> Check-in </a>
         {% else %}
-        <a href="{% url 'checkin' searched %}" class="btn btn btn btn btn-warning btn-sm"> Check-in </a>
+        <a href="{% url 'checkin' searched %}"** class="btn btn btn btn btn-warning btn-sm"> Check-in </a>
         {% endif%}
+
+
+        {% if reserva.servicios.extra_tipo_servicio == TRANSPORTE and reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
+        <a href="{% url 'planificar' %}" class="btn btn btn btn btn-warning btn-sm "> Planificar Transporte </a>
+        {% endif%}
+
+       
+
+
+
+        {% if reserva.statusreserva == "ESPERANDO PAGO RESERVA" or reserva.statusreserva == "RESERVA REALIZADA - PAGADA" %}
         <a href="{% url 'delete_reserva' searched %}" class="btn btn btn-danger btn-sm"> Cancelar Reserva </a>
+        {% endif %}
         </div>
         {% endfor %}
+        
       </div>
       </div>
      
   </div>  
+
+
     
+
+ 
 </center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

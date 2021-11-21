@@ -6,6 +6,12 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+import random
+
+
+def random_string():
+    return str(random.randint(10000, 99999))
+
 
 
 class Administrador(models.Model):
@@ -17,8 +23,6 @@ class Administrador(models.Model):
     telefonoadm = models.IntegerField()
     password = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.rutadm
     class Meta:
         managed = False
         db_table = 'administrador'
@@ -53,12 +57,15 @@ class Departamento(models.Model):
     piezas = models.IntegerField()
     banos = models.IntegerField()
     terraza = models.CharField(max_length=100)
+    imagenes = models.CharField(max_length=200,blank=True, null=True,editable=True)
     administrador_rutadm = models.ForeignKey(Administrador, models.DO_NOTHING, db_column='administrador_rutadm')
     direccion_direccioncompleta = models.ForeignKey('Direccion', models.DO_NOTHING, db_column='direccion_direccioncompleta')
     precio = models.IntegerField()
     mantenciones_tipo_mantencion = models.ForeignKey('Mantenciones', models.DO_NOTHING, db_column='mantenciones_tipo_mantencion', blank=True, null=True)
+    inventario_id_inv = models.ForeignKey('Inventario', models.DO_NOTHING, db_column='inventario_id_inv')
+
     def __str__(self):
-        return self.id_depto    
+        return self.id_depto
 
     class Meta:
         managed = False
@@ -73,7 +80,6 @@ class Direccion(models.Model):
 
     def __str__(self):
         return self.direccioncompleta
-
     class Meta:
         managed = False
         db_table = 'direccion'
@@ -90,6 +96,20 @@ class Funcionario(models.Model):
     class Meta:
         managed = False
         db_table = 'funcionario'
+
+
+class Inventario(models.Model):
+    id_inv = models.CharField(primary_key=True, max_length=100)
+    cocina = models.CharField(max_length=200)
+    muebles = models.CharField(max_length=200)
+    banoinv = models.CharField(max_length=200)
+    camas = models.CharField(max_length=200)
+    extras = models.CharField(max_length=200, blank=True, null=True)
+    def __str__(self):
+        return self.id_inv
+    class Meta:
+        managed = False
+        db_table = 'inventario'
 
 
 class Mantenciones(models.Model):
@@ -114,6 +134,7 @@ class Reserva(models.Model):
     telefono = models.IntegerField()
     statusreserva = models.CharField(max_length=200,default="ESPERANDO PAGO RESERVA")
     servicios_extra_tipo_servicio = models.ForeignKey('ServiciosExtra', models.DO_NOTHING, db_column='servicios_extra_tipo_servicio')
+    imagen = models.BinaryField(blank=True, null=True)
 
     def __str__(self):
         return self.rutcliente
@@ -123,7 +144,6 @@ class Reserva(models.Model):
     def cuota1view(self):
         return (self.total  /2)
 
-
     class Meta:
         managed = False
         db_table = 'reserva'
@@ -132,12 +152,28 @@ class Reserva(models.Model):
 class ServiciosExtra(models.Model):
     tipo_servicio = models.CharField(primary_key=True, max_length=300)
     precio = models.IntegerField()
+
     def __str__(self):
-        return self.tipo_servicio   
+        return self.tipo_servicio 
     class Meta:
         managed = False
         db_table = 'servicios_extra'
 
 
 
+class Transporte(models.Model):
+    id_transporte = models.AutoField(primary_key=True,default=random_string)
+    nombre = models.CharField(max_length=200, blank=True, null=True,default="-TODAVIA NO DEFINIDO-")
+    desde = models.CharField(max_length=200)
+    vehiculo = models.CharField(max_length=200, blank=True, null=True,default="-TODAVIA NO DEFINIDO-")
+    horario = models.CharField(max_length=100)
+    reserva_rutcliente = models.ForeignKey(Reserva, models.DO_NOTHING, db_column="reserva_rutcliente" )
 
+    def __str__(self):
+        return self.id_transporte
+  
+
+
+    class Meta:
+        managed = False
+        db_table = 'transporte'
