@@ -247,6 +247,7 @@ def planificar(request):
 			messages.success (request,'Se planifico tu transporte con exito!')
 			return HttpResponseRedirect('/planificar?submitted=true')
 	else:
+		
 		form = PlanificacionForm
 		
 		if 'submitted' in request.GET:
