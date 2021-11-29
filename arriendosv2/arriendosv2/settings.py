@@ -85,7 +85,7 @@ DATABASES={
     'default':
     {
     'ENGINE':'django.db.backends.oracle',
-    'NAME':'duoc_high',
+    'NAME':'duoc12_high',
     'USER':'admin', 
     'PASSWORD':'Portafolio123',#Please provide the db password here
     }
